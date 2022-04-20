@@ -40,7 +40,7 @@ instance de-scription. The instance description complements the type description
 describe a type or an instance of a data element. 
 
 With respect to [2], the attributes that represent the instance description of a data element are sub-sequently explained. 
-The “Value” represents a measurable value of the instance. The attribute “Ex-pression Logic” can be used to indicate a 
+The “Value” represents a measurable value of the instance. The attribute “Interpretation Logic” can be used to indicate a 
 logical interpretation of the value, e.g. less than/ greater than/ equal. The quality indicates the quality of the value, 
 in means of quality of measure. The “Ex-pression Goal” is used to indicate whether a data element represents:
 -	Requirements expression: the data element is used to describe a requirement (e.g. an order requires the lot size “4”)
