@@ -42,7 +42,7 @@ describe a type or an instance of a data element.
 With respect to [2], the attributes that represent the instance description of a data element are sub-sequently explained. 
 The “Value” represents a measurable value of the instance. The attribute “Interpretation Logic” can be used to indicate a 
 logical interpretation of the value, e.g. less than/ greater than/ equal. The quality indicates the quality of the value, 
-in means of quality of measure. The “Ex-pression Goal” is used to indicate whether a data element represents:
+in means of quality of measure. The “Expression Goal” is used to indicate whether a data element represents:
 -	Requirements expression: the data element is used to describe a requirement (e.g. an order requires the lot size “4”)
 -	Assurance expression: the data element is used to describe an assurance (e.g. a machine as-sures to produce with lot size “4”)
 -	Present expression: the data element is used to describe a measured value (e.g. the actual produce lot size was “3”)
