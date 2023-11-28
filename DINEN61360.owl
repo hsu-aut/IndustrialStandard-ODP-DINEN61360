@@ -6,30 +6,11 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:obda="https://w3id.org/obda/vocabulary#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
-     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
-    <owl:Ontology rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360">
-        <owl:versionInfo>1.2.0</owl:versionInfo>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3id.org/hsu-aut/DINEN61360">
+        <owl:versionIRI rdf:resource="http://www.w3id.org/hsu-aut/2.0.0"/>
+        <owl:versionInfo>2.0.0</owl:versionInfo>
     </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
-
-    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
     
 
 
@@ -44,102 +25,102 @@
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element_describes -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Data_Element_describes -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element_describes">
-        <owl:inverseOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element_describes">
+        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
         <rdfs:comment>Description:
 This ObjectProperty is used to connect a data element with any kind of entity that is described by the data element</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description_has_Type -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description_has_Type">
-        <owl:inverseOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description_has_Instance"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
-        <rdfs:range rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type">
+        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description_has_Instance -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description_has_Instance">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
-        <rdfs:range rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#complex_Data_Type_has_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#complex_Data_Type_has_Member">
-        <owl:inverseOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#is_Member_of_Complex_Data_Type"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member">
+        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description_has_Type"/>
-                        <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type"/>
+                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
         <rdfs:comment>Description:
 ObjectProperty that is used to connect an instance of a complex data type with corresponding members of the complex data type. These members are connected to types and instances of other (complex) data types</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Data_Element">
-        <rdfs:range rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element">
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
         <rdfs:comment>Description:
 This ObjectProperty is used to connect any kind of entity with a data element that is used for its description.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description">
-        <owl:inverseOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description">
+        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
         <rdfs:comment>Description:
 ObjectProperty is used to connect an individual that needs to be described by DataProperties with the Instance Description of that properties.</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description">
-        <owl:inverseOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#is_Type_Description_of_Data_Element"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description">
+        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 ObjectProperty is used to connect an individual that needs to be described by DataProperties with the Type Description of that properties.
 
@@ -149,9 +130,9 @@ Any indivudual representing a property, can have only one Type Description</rdfs
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#is_Instance_Description_of_Data_Element">
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element">
         <rdfs:comment>Description:
 ObjectProperty is used to connect an Instance Description with the Data_Element that it describes.
 
@@ -160,17 +141,17 @@ Inverse of has_Instance_Description</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#is_Member_of_Complex_Data_Type -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#is_Member_of_Complex_Data_Type">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
         <rdfs:range>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description_has_Type"/>
-                        <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type"/>
+                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -179,9 +160,9 @@ Inverse of has_Instance_Description</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#is_Type_Description_of_Data_Element -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element -->
 
-    <owl:ObjectProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#is_Type_Description_of_Data_Element">
+    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element">
         <rdfs:comment>Description:
 ObjectProperty is used to connect a Type_Description with a Data_Element that has instace descriptions of this type. 
 
@@ -201,10 +182,10 @@ Inverse of has_Type_Description</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member_Dimension -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member_Dimension">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>Description:
 
@@ -213,9 +194,9 @@ Indicates the dimension of an array member.</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member_Position -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member_Position">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position">
         <rdfs:comment>Description:
 
 DataProperty that indicates the position of an Array_Member in a DataType List.</rdfs:comment>
@@ -223,9 +204,9 @@ DataProperty that indicates the position of an Array_Member in a DataType List.<
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Boolean_Operator -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Boolean_Operator -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Boolean_Operator">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Boolean_Operator">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -267,12 +248,12 @@ DataProperty that indicates the position of an Array_Member in a DataType List.<
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Code -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Code -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Code">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Code">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 DIN EN 61360-1:2018 Section 7.3
 Unique identifier of this data element type. Preferable this should be a standardized identifier (e.g. from eclss or common data dictionary).  optional exlusion of &quot;o&quot; and &quot;i&quot; is not implemented.    
@@ -284,10 +265,10 @@ type: string with 6 digits between, first three digits are a-z and last three di
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Created_at_Date -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Created_at_Date -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Created_at_Date">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Created_at_Date">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
         <rdfs:comment>Description: 
 A SemAnz40 attribute, that indicates the creation date for an instance.</rdfs:comment>
@@ -295,11 +276,11 @@ A SemAnz40 attribute, that indicates the creation date for an instance.</rdfs:co
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Definition -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Definition -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Definition">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Definition">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A textual definition of the data element
 
@@ -314,11 +295,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Drawing_Reference -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Drawing_Reference -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Drawing_Reference">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Drawing_Reference">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A link to a drawing (or picture) that is used for further explanation of the data element
 
@@ -333,12 +314,12 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -371,11 +352,11 @@ Liability: Necessary</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Format_DIN61360_SemAnz40 -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Format_DIN61360_SemAnz40 -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Format_DIN61360_SemAnz40">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Format_DIN61360_SemAnz40">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
         <rdfs:comment>Description: 
 
 Indicates, whether the described type or entity is described by the DIN61360&amp;SemAnz40 Format.
@@ -389,11 +370,11 @@ Poposed Data Range Expression: xsd:boolean</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Formula -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Formula -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Formula">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Formula">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A mathematical euqation that is being used for characterization of the data element
 
@@ -408,10 +389,10 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member_Position -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member_Position">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#List_Member"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>Description:
 
@@ -420,12 +401,12 @@ DataProperty that indicates the position of a List_Member in a DataType List.</r
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Logic_Interpretation -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Logic_Interpretation">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -470,11 +451,11 @@ Liability: Necessary</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Note -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Note -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Note">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Note">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Additional information that are important to understand the meaning of the data element
 
@@ -489,11 +470,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Preferred_Letter_Symbol -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Preferred_Letter_Symbol">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A sign or literal that is used to represent the property (e.g. greek &quot;sigma&quot; for tension))
 
@@ -508,11 +489,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Preferred_Name -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Preferred_Name">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Represents the preferred name of the data element type, that is being used for searches for instance.
 
@@ -527,11 +508,11 @@ Poposed Data Range Expression: xsd:string[maxLength 70]</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Quality -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Quality -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Quality">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Quality">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
         <rdfs:comment>Description:
 
 Not supported so far, since it requires a additional quality ontology</rdfs:comment>
@@ -539,21 +520,21 @@ Not supported so far, since it requires a additional quality ontology</rdfs:comm
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Remark -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Remark -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Remark">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Remark">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Additional information that can be used to express a oppinion but should not change the meaning of the definition.
 DIN EN 61360-1:2018 Section 8.5</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Revision_Number -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Revision_Number -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Revision_Number">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Revision_Number">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Number that represents the actual count of changes
 
@@ -568,11 +549,11 @@ Poposed Data Range Expression: xsd:integer[&gt;= 1 , &lt;= 99]</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Short_Name -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Short_Name -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Short_Name">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Short_Name">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A short name or acronym that is used for the preferred name
 
@@ -587,11 +568,11 @@ Poposed Data Range Expression: xsd:string[maxLength 17]</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Source_Document_of_Definition -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Source_Document_of_Definition -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Source_Document_of_Definition">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Source_Document_of_Definition">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A link to a source file, where the definition of the data element was taken from
 
@@ -606,11 +587,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Synonymous_Letter_Symbol -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Synonymous_Letter_Symbol">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 A synonym that is used for the preferred equation sign
 
@@ -625,11 +606,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Synonymous_Name -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Synonymous_Name">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Synonyms to the preferred name
 
@@ -644,15 +625,13 @@ Poposed Data Range Expression: xsd:string[maxLength 70]</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Unit_of_Measure -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Unit_of_Measure -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Unit_of_Measure">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Unit_of_Measure">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Defines the unit of measure for a data element (e.g. km/h)
-
-Liability: case dependend, checked by SWRL rule 2
 
 DIN EN 61360-1:2018 Section 10.7
 
@@ -663,18 +642,18 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description_has_Type"/>
-                        <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -694,11 +673,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_Field_length -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_Field_length">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
@@ -713,11 +692,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_Field_length_Variable -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length_Variable -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_Field_length_Variable">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length_Variable">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
@@ -732,11 +711,11 @@ Poposed Data Range Expression: xsd:boolean</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_non-quantitativ -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_non-quantitativ -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_non-quantitativ">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_non-quantitativ">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -772,7 +751,7 @@ Poposed Data Range Expression: xsd:boolean</rdfs:comment>
                 </owl:oneOf>
             </rdfs:Datatype>
         </rdfs:range>
-        <owl:propertyDisjointWith rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_quantitativ"/>
+        <owl:propertyDisjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ"/>
         <rdfs:comment>Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
@@ -787,11 +766,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_quantitativ -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_Format_quantitativ">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:oneOf>
@@ -829,11 +808,11 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_List -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_List">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
         <rdfs:comment>Description: 
 Represents the possible values for a data element
 
@@ -848,11 +827,11 @@ Poposed Data Range Expression: xsd:boolean</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List_Member">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
         <rdfs:comment>Description: 
 Represents the possible values for a data element
 
@@ -860,18 +839,16 @@ Liability: optional (in DIN613060 case depended due to classification of data el
 
 DIN EN 61360-1:2018 Section 16
 
-Type: This data property represents the one (!) member of the value list, violation may result in inconsistency, since the compliance of value list and value is checked by SWRL rule 3. 
-
 Poposed Data Range Expression: xsd:string</rdfs:comment>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Version_Number -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Version_Number -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Version_Number">
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Version_Number">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Number that indicates different versions of one data element type
 
@@ -886,10 +863,10 @@ Poposed Data Range Expression: xsd:integer[&gt;= 1 , &lt;= 999]</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#backwards_compatible_Revision -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Revision -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#backwards_compatible_Revision">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Revision">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Indicates, to which revisions the data type is backwards compatible.
 
@@ -900,10 +877,10 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#backwards_compatible_Version -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Version -->
 
-    <owl:DatatypeProperty rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#backwards_compatible_Version">
-        <rdfs:domain rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Version">
+        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Indicates, to which version numbers the data type is backwards compatible.
 
@@ -925,34 +902,34 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Array -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Array">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array_Member -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member_Dimension"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Array_Member_Position"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
@@ -961,35 +938,35 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Bag -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Bag -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Bag">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Bag">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Bag_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Bag_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Bag_Member">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Boolean -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Boolean -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Boolean">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Boolean">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
                 <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -997,38 +974,38 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Type"/>
-        <owl:disjointWith rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
+        <owl:disjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Data_Element -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Element">
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element">
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description"/>
+                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description"/>
                         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                         <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal"/>
+                                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal"/>
                                         <owl:hasValue>Actual_Value</owl:hasValue>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
@@ -1036,14 +1013,14 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
                         </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description"/>
+                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description"/>
                         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                         <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal"/>
+                                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal"/>
                                         <owl:hasValue>Assurance</owl:hasValue>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
@@ -1051,14 +1028,14 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
                         </owl:onClass>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description"/>
+                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description"/>
                         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                         <owl:onClass>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
                                     <owl:Restriction>
-                                        <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal"/>
+                                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal"/>
                                         <owl:hasValue>Requirement</owl:hasValue>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
@@ -1070,18 +1047,18 @@ Poposed Data Range Expression: xsd:string</rdfs:comment>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Type_Description"/>
-                <owl:someValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#has_Instance_Description"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description"/>
+                <owl:onClass rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <owl:disjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
         <rdfs:comment>Description:
 Contains a the structure of all data element (DIN61360 3.5.2, see also section 4)
 
@@ -1090,41 +1067,41 @@ Each Data_Element has to have a type description and may have an instance descri
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Type -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Data_Type -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Instance_Description">
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Expression_Goal"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Logic_Interpretation"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description"/>
+        <owl:disjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Integer -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Integer -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Integer">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Integer">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
                 <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1132,27 +1109,27 @@ Each Data_Element has to have a type description and may have an instance descri
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#List -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#List -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#List">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#List_Member"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#List_Member -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List_Member">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#List_Member_Position"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
@@ -1161,13 +1138,13 @@ Each Data_Element has to have a type description and may have an instance descri
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Real -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Real -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Real">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Real">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
                 <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1175,35 +1152,35 @@ Each Data_Element has to have a type description and may have an instance descri
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Set -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Set -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Set">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Set">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Set_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Set_Member"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Set_Member -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Set_Member -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Set_Member">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Complex_Data_Type_Member"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Set_Member">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
     </owl:Class>
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
             </owl:Restriction>
@@ -1220,13 +1197,13 @@ Type: is a enumeration of standard compliant data types. Please see DIN61360 for
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#String -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#String -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#String">
-        <rdfs:subClassOf rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Simple_Data_Type"/>
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#String">
+        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Value_List_Member"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
                 <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1234,61 +1211,61 @@ Type: is a enumeration of standard compliant data types. Please see DIN61360 for
     
 
 
-    <!-- http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description -->
+    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Type_Description -->
 
-    <owl:Class rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Type_Description">
+    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Code"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Code"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Definition"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Definition"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Preferred_Name"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Short_Name"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Short_Name"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Version_Number"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Version_Number"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Preferred_Letter_Symbol"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Synonymous_Letter_Symbol"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.hsu-ifa.de/ontologies/DINEN61360#Synonymous_Name"/>
+                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
@@ -1336,19 +1313,19 @@ If a liability in DIN61360 states &quot;case dependend&quot; (bedingt), then thi
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Array"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Bag"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Boolean"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Integer"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#List"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Real"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#Set"/>
-            <rdf:Description rdf:about="http://www.hsu-ifa.de/ontologies/DINEN61360#String"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Bag"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Boolean"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Integer"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Real"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Set"/>
+            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#String"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
 
