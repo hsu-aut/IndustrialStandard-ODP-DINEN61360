@@ -1,287 +1,194 @@
-<?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.hsu-ifa.de/ontologies/DINEN61360#"
-     xml:base="http://www.hsu-ifa.de/ontologies/DINEN61360"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:obda="https://w3id.org/obda/vocabulary#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.w3id.org/hsu-aut/DINEN61360">
-        <owl:versionIRI rdf:resource="http://www.w3id.org/hsu-aut/2.0.1"/>
-        <owl:versionInfo>2.0.1</owl:versionInfo>
-    </owl:Ontology>
-    
+@prefix : <http://www.w3id.org/hsu-aut/DINEN61360#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3id.org/hsu-aut/DINEN61360#> .
+
+<http://www.w3id.org/hsu-aut/DINEN61360> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://www.w3id.org/hsu-aut/DINEN61360/2.0.1> ;
+                                          owl:versionInfo "2.0.1" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3id.org/hsu-aut/DINEN61360#Data_Element_describes
+:Data_Element_describes rdf:type owl:ObjectProperty ;
+                        owl:inverseOf :has_Data_Element ;
+                        rdfs:domain :Data_Element ;
+                        rdfs:comment """Description:
+This ObjectProperty is used to connect a data element with any kind of entity that is described by the data element""" .
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type
+:Instance_Description_has_Type rdf:type owl:ObjectProperty ;
+                               owl:inverseOf :Type_Description_has_Instance ;
+                               rdfs:domain :Instance_Description ;
+                               rdfs:range :Type_Description .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Data_Element_describes -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element_describes">
-        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
-        <rdfs:comment>Description:
-This ObjectProperty is used to connect a data element with any kind of entity that is described by the data element</rdfs:comment>
-    </owl:ObjectProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance
+:Type_Description_has_Instance rdf:type owl:ObjectProperty ;
+                               rdfs:domain :Type_Description ;
+                               rdfs:range :Instance_Description .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type">
-        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description_has_Instance">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-    </owl:ObjectProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member
+:complex_Data_Type_has_Member rdf:type owl:ObjectProperty ;
+                              owl:inverseOf :is_Member_of_Complex_Data_Type ;
+                              rdfs:domain [ owl:intersectionOf ( :Instance_Description
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :Instance_Description_has_Type ;
+                                                                   owl:allValuesFrom :Complex_Data_Type
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                              rdfs:range :Complex_Data_Type_Member ;
+                              rdfs:comment """Description:
+ObjectProperty that is used to connect an instance of a complex data type with corresponding members of the complex data type. These members are connected to types and instances of other (complex) data types""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member">
-        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type"/>
-                        <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-        <rdfs:comment>Description:
-ObjectProperty that is used to connect an instance of a complex data type with corresponding members of the complex data type. These members are connected to types and instances of other (complex) data types</rdfs:comment>
-    </owl:ObjectProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element
+:has_Data_Element rdf:type owl:ObjectProperty ;
+                  rdfs:range :Data_Element ;
+                  rdfs:comment """Description:
+This ObjectProperty is used to connect any kind of entity with a data element that is used for its description.""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#has_Data_Element">
-        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
-        <rdfs:comment>Description:
-This ObjectProperty is used to connect any kind of entity with a data element that is used for its description.</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description">
-        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-        <rdfs:comment>Description:
-ObjectProperty is used to connect an individual that needs to be described by DataProperties with the Instance Description of that properties.</rdfs:comment>
-    </owl:ObjectProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description
+:has_Instance_Description rdf:type owl:ObjectProperty ;
+                          owl:inverseOf :is_Instance_Description_of_Data_Element ;
+                          rdf:type owl:InverseFunctionalProperty ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Complex_Data_Type_Member
+                                                      :Data_Element
+                                                    )
+                                      ] ;
+                          rdfs:range :Instance_Description ;
+                          rdfs:comment """Description:
+ObjectProperty is used to connect an individual that needs to be described by DataProperties with the Instance Description of that properties.""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description">
-        <owl:inverseOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description
+:has_Type_Description rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :is_Type_Description_of_Data_Element ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( :Complex_Data_Type_Member
+                                                  :Data_Element
+                                                )
+                                  ] ;
+                      rdfs:range :Type_Description ;
+                      rdfs:comment """Description:
 ObjectProperty is used to connect an individual that needs to be described by DataProperties with the Type Description of that properties.
 
 Functional:
-Any indivudual representing a property, can have only one Type Description</rdfs:comment>
-    </owl:ObjectProperty>
-    
+Any indivudual representing a property, can have only one Type Description""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element">
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#is_Instance_Description_of_Data_Element
+:is_Instance_Description_of_Data_Element rdf:type owl:ObjectProperty ;
+                                         rdfs:comment """Description:
 ObjectProperty is used to connect an Instance Description with the Data_Element that it describes.
 
-Inverse of has_Instance_Description</rdfs:comment>
-    </owl:ObjectProperty>
-    
+Inverse of has_Instance_Description""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-        <rdfs:range>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type"/>
-                        <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:range>
-    </owl:ObjectProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#is_Member_of_Complex_Data_Type
+:is_Member_of_Complex_Data_Type rdf:type owl:ObjectProperty ;
+                                rdfs:domain :Complex_Data_Type_Member ;
+                                rdfs:range [ owl:intersectionOf ( :Instance_Description
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :Instance_Description_has_Type ;
+                                                                    owl:allValuesFrom :Complex_Data_Type
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element">
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#is_Type_Description_of_Data_Element
+:is_Type_Description_of_Data_Element rdf:type owl:ObjectProperty ;
+                                     rdfs:comment """Description:
 ObjectProperty is used to connect a Type_Description with a Data_Element that has instace descriptions of this type. 
 
-Inverse of has_Type_Description</rdfs:comment>
-    </owl:ObjectProperty>
-    
+Inverse of has_Type_Description""" .
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+#################################################################
+#    Data properties
+#################################################################
 
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension
+:Array_Member_Dimension rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Array_Member ;
+                        rdfs:range xsd:int ;
+                        rdfs:comment """Description:
 
-
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>Description:
-
-Indicates the dimension of an array member.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Indicates the dimension of an array member.""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position -->
+###  http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position
+:Array_Member_Position rdf:type owl:DatatypeProperty ;
+                       rdfs:comment """Description:
 
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position">
-        <rdfs:comment>Description:
-
-DataProperty that indicates the position of an Array_Member in a DataType List.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+DataProperty that indicates the position of an Array_Member in a DataType List.""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Boolean_Operator -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Boolean_Operator">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first>AND</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first>NAND</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first>NOR</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first>OR</rdf:first>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                        <rdf:first>XOR</rdf:first>
-                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </rdfs:range>
-        <rdfs:comment>Is used with Boolean_Association to define what kind of boolean relation connects the Data_Elements of the Boolean_Association</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Boolean_Operator
+:Boolean_Operator rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:oneOf [ rdf:type rdf:List ;
+                                           rdf:first "AND" ;
+                                           rdf:rest [ rdf:type rdf:List ;
+                                                      rdf:first "NAND" ;
+                                                      rdf:rest [ rdf:type rdf:List ;
+                                                                 rdf:first "NOR" ;
+                                                                 rdf:rest [ rdf:type rdf:List ;
+                                                                            rdf:first "OR" ;
+                                                                            rdf:rest [ rdf:type rdf:List ;
+                                                                                       rdf:first "XOR" ;
+                                                                                       rdf:rest rdf:nil
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ]
+                             ] ;
+                  rdfs:comment "Is used with Boolean_Association to define what kind of boolean relation connects the Data_Elements of the Boolean_Association" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Code -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Code">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Code
+:Code rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdf:type owl:FunctionalProperty ;
+      rdfs:domain :Type_Description ;
+      rdfs:comment """Description:
 DIN EN 61360-1:2018 Section 7.3
-Unique identifier of this data element type. Preferable this should be a standardized identifier (e.g. from eclss or common data dictionary).  optional exlusion of &quot;o&quot; and &quot;i&quot; is not implemented.    
+Unique identifier of this data element type. Preferable this should be a standardized identifier (e.g. from eclss or common data dictionary).  optional exlusion of \"o\" and \"i\" is not implemented.    
 
 Liability: necessary    
 
-type: string with 6 digits between, first three digits are a-z and last three digits are 0-9  poposed data range expression: xsd:string[pattern &quot;[a-z0-9] {6}&quot;]</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+type: string with 6 digits between, first three digits are a-z and last three digits are 0-9  poposed data range expression: xsd:string[pattern \"[a-z0-9] {6}\"]""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Created_at_Date -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Created_at_Date">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
-        <rdfs:comment>Description: 
-A SemAnz40 attribute, that indicates the creation date for an instance.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Created_at_Date
+:Created_at_Date rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Instance_Description ;
+                 rdfs:range xsd:dateTimeStamp ;
+                 rdfs:comment """Description: 
+A SemAnz40 attribute, that indicates the creation date for an instance.""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Definition -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Definition">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Definition
+:Definition rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Type_Description ;
+            rdfs:comment """Description:
 A textual definition of the data element
 
 Liability: Necessary
@@ -290,17 +197,14 @@ DIN EN 61360-1:2018 Section 8.3
 
 Type: String
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Drawing_Reference -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Drawing_Reference">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Drawing_Reference
+:Drawing_Reference rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Type_Description ;
+                   rdfs:comment """Description:
 A link to a drawing (or picture) that is used for further explanation of the data element
 
 Liability: Optional
@@ -309,73 +213,53 @@ DIN EN 61360-1:2018 Section 6.13
 
 Type: Contains a URL link as a string to a picture
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first>Actual_Value</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first>Assurance</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first>Requirement</rdf:first>
-                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </rdfs:range>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal
+:Expression_Goal rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :Instance_Description ;
+                 rdfs:range [ rdf:type rdfs:Datatype ;
+                              owl:oneOf [ rdf:type rdf:List ;
+                                          rdf:first "Actual_Value" ;
+                                          rdf:rest [ rdf:type rdf:List ;
+                                                     rdf:first "Assurance" ;
+                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                rdf:first "Requirement" ;
+                                                                rdf:rest rdf:nil
+                                                              ]
+                                                   ]
+                                        ]
+                            ] ;
+                 rdfs:comment """Description:
 
 The goal of the values expression, which can be a Requirement, an Assurance or an actual (e.g. measured) value.
 
-Liability: Necessary</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Liability: Necessary""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Format_DIN61360_SemAnz40 -->
+###  http://www.w3id.org/hsu-aut/DINEN61360#Format_DIN61360_SemAnz40
+:Format_DIN61360_SemAnz40 rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain :Data_Element ;
+                          rdfs:comment """Description: 
 
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Format_DIN61360_SemAnz40">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element"/>
-        <rdfs:comment>Description: 
-
-Indicates, whether the described type or entity is described by the DIN61360&amp;SemAnz40 Format.
+Indicates, whether the described type or entity is described by the DIN61360&SemAnz40 Format.
 
 Liability: Necessary
 
 Type: If true, the Data Element is based on the Din61360 and SemAnz40 description
 
-Poposed Data Range Expression: xsd:boolean</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:boolean""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Formula -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Formula">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Formula
+:Formula rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Type_Description ;
+         rdfs:comment """Description:
 A mathematical euqation that is being used for characterization of the data element
 
 Liability: Optional
@@ -384,79 +268,53 @@ DIN EN 61360-1:2018 Section 6.5
 
 Type: contains a URL link as a string to a source file that describes the formula
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position -->
+###  http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position
+:List_Member_Position rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :List_Member ;
+                      rdfs:range xsd:int ;
+                      rdfs:comment """Description:
 
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#List_Member"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>Description:
-
-DataProperty that indicates the position of a List_Member in a DataType List.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+DataProperty that indicates the position of a List_Member in a DataType List.""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation -->
+###  http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation
+:Logic_Interpretation rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :Instance_Description ;
+                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                   owl:oneOf [ rdf:type rdf:List ;
+                                               rdf:first "<" ;
+                                               rdf:rest [ rdf:type rdf:List ;
+                                                          rdf:first "<=" ;
+                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                     rdf:first "=" ;
+                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                rdf:first ">" ;
+                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                           rdf:first ">=" ;
+                                                                                           rdf:rest rdf:nil
+                                                                                         ]
+                                                                              ]
+                                                                   ]
+                                                        ]
+                                             ]
+                                 ] ;
+                      rdfs:comment """Description:
 
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first>&lt;</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first>&lt;=</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first>=</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first>&gt;</rdf:first>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                        <rdf:first>&gt;=</rdf:first>
-                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </rdfs:range>
-        <rdfs:comment>Description:
+Indicates, whether a value with a certain Expression Goal has to be considered as equal (\"=\"), greater than (\"<\"), lower than (\">\") or in combination with an equals (i.e. \"<=\", \">=\").
 
-Indicates, whether a value with a certain Expression Goal has to be considered as equal (&quot;=&quot;), greater than (&quot;&lt;&quot;), lower than (&quot;&gt;&quot;) or in combination with an equals (i.e. &quot;&lt;=&quot;, &quot;&gt;=&quot;).
-
-Liability: Necessary</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Liability: Necessary""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Note -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Note">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Note
+:Note rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Type_Description ;
+      rdfs:comment """Description:
 Additional information that are important to understand the meaning of the data element
 
 Liability: Optional
@@ -465,18 +323,15 @@ DIN EN 61360-1:2018 Section 8.4
 
 Type: String
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
-A sign or literal that is used to represent the property (e.g. greek &quot;sigma&quot; for tension))
+###  http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol
+:Preferred_Letter_Symbol rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf owl:topDataProperty ;
+                         rdfs:domain :Type_Description ;
+                         rdfs:comment """Description:
+A sign or literal that is used to represent the property (e.g. greek \"sigma\" for tension))
 
 Liability: Optional
 
@@ -484,17 +339,14 @@ DIN EN 61360-1:2018 Section 6.6
 
 Type: IEC 60027, IEC 60747 or IEC 60148 compliant formula sign described as a string
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name
+:Preferred_Name rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Type_Description ;
+                rdfs:comment """Description:
 Represents the preferred name of the data element type, that is being used for searches for instance.
 
 Liability: Necessary
@@ -503,39 +355,30 @@ DIN EN 61360-1:2018 Section 7.4
 
 Type: String with lower and upper case, with a maximum of 70 characters
 
-Poposed Data Range Expression: xsd:string[maxLength 70]</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string[maxLength 70]""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Quality -->
+###  http://www.w3id.org/hsu-aut/DINEN61360#Quality
+:Quality rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Instance_Description ;
+         rdfs:comment """Description:
 
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Quality">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-        <rdfs:comment>Description:
-
-Not supported so far, since it requires a additional quality ontology</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Not supported so far, since it requires a additional quality ontology""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Remark -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Remark">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Additional information that can be used to express a oppinion but should not change the meaning of the definition.
-DIN EN 61360-1:2018 Section 8.5</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Remark
+:Remark rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Type_Description ;
+        rdfs:comment """Additional information that can be used to express a oppinion but should not change the meaning of the definition.
+DIN EN 61360-1:2018 Section 8.5""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Revision_Number -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Revision_Number">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Revision_Number
+:Revision_Number rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Type_Description ;
+                 rdfs:comment """Description:
 Number that represents the actual count of changes
 
 Liability: Necessary
@@ -544,17 +387,14 @@ DIN EN 61360-1:2018 Section 7.5
 
 Type: Integer with two digits between 1 and 99
 
-Poposed Data Range Expression: xsd:integer[&gt;= 1 , &lt;= 99]</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:integer[>= 1 , <= 99]""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Short_Name -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Short_Name">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Short_Name
+:Short_Name rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Type_Description ;
+            rdfs:comment """Description:
 A short name or acronym that is used for the preferred name
 
 Liability: Necessary
@@ -563,17 +403,14 @@ DIN EN 61360-1:2018 Section 7.6
 
 Type: Strong restrictions of DIN61360  not implemented, just strings necessary. Maximum characters is 17.
 
-Poposed Data Range Expression: xsd:string[maxLength 17]</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string[maxLength 17]""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Source_Document_of_Definition -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Source_Document_of_Definition">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Source_Document_of_Definition
+:Source_Document_of_Definition rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf owl:topDataProperty ;
+                               rdfs:domain :Type_Description ;
+                               rdfs:comment """Description:
 A link to a source file, where the definition of the data element was taken from
 
 Liability: Optional
@@ -582,17 +419,14 @@ DIN EN 61360-1:2018 Section 8.6
 
 Type: Should contain a description of the source document with a maximum of 80 characters. Document has to be approved by ISO or IEC (e.g. should be a standard like IEC XXXXX). Alternatively use a URL to give a source document that is not approved by ISO.
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol
+:Synonymous_Letter_Symbol rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain :Type_Description ;
+                          rdfs:comment """Description:
 A synonym that is used for the preferred equation sign
 
 Liability: Optional
@@ -601,17 +435,14 @@ DIN EN 61360-1:2018 Section 6.7
 
 Type: IEC 60027, IEC 60747 or IEC 60148 compliant formula sign
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name
+:Synonymous_Name rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Type_Description ;
+                 rdfs:comment """Description:
 Synonyms to the preferred name
 
 Liability: Optional
@@ -620,45 +451,36 @@ DIN EN 61360-1:2018 Section 7.7
 
 Type: String with lower and upper case, with a maximum of 70 characters
 
-Poposed Data Range Expression: xsd:string[maxLength 70]</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string[maxLength 70]""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Unit_of_Measure -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Unit_of_Measure">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Unit_of_Measure
+:Unit_of_Measure rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Type_Description ;
+                 rdfs:comment """Description:
 Defines the unit of measure for a data element (e.g. km/h)
 
 DIN EN 61360-1:2018 Section 10.7
 
 Type: This data property represents the unit of measure, which should be ISO 31 compliant (SI-Units)
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description_has_Type"/>
-                        <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value
+:Value rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdf:type owl:FunctionalProperty ;
+       rdfs:domain [ owl:intersectionOf ( :Instance_Description
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :Instance_Description_has_Type ;
+                                            owl:allValuesFrom :Simple_Data_Type
+                                          ]
+                                        ) ;
+                     rdf:type owl:Class
+                   ] ;
+       rdfs:comment """Description:
 
 The actual value of something being described.
 
@@ -668,17 +490,14 @@ SemAnz40
 
 Type: This data property represents the value of the data element, which is a string, while the actual data type is represented by the Data Property DataType (!)
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length
+:Value_Format_Field_length rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf owl:topDataProperty ;
+                           rdfs:domain :Type_Description ;
+                           rdfs:comment """Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
 Liability: Necessary
@@ -687,17 +506,14 @@ DIN EN 61360-1:2018 Section 10.8
 
 Type: This data property represents only the field length, since this could be exponential (expressed with an E), it is a string
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length_Variable -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length_Variable">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_Field_length_Variable
+:Value_Format_Field_length_Variable rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                    rdfs:domain :Type_Description ;
+                                    rdfs:comment """Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
 Liability: Necessary
@@ -706,53 +522,33 @@ DIN EN 61360-1:2018 Section 10.8
 
 Type: This data property represents only the case, that a value format has a variable field length (true)
 
-Poposed Data Range Expression: xsd:boolean</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:boolean""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_non-quantitativ -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_non-quantitativ">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first>A</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first>B</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first>M</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first>N</rdf:first>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                        <rdf:first>X</rdf:first>
-                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </rdfs:range>
-        <owl:propertyDisjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_non-quantitativ
+:Value_Format_non-quantitativ rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf owl:topDataProperty ;
+                              rdfs:domain :Type_Description ;
+                              rdfs:range [ rdf:type rdfs:Datatype ;
+                                           owl:oneOf [ rdf:type rdf:List ;
+                                                       rdf:first "A" ;
+                                                       rdf:rest [ rdf:type rdf:List ;
+                                                                  rdf:first "B" ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first "M" ;
+                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                        rdf:first "N" ;
+                                                                                        rdf:rest [ rdf:type rdf:List ;
+                                                                                                   rdf:first "X" ;
+                                                                                                   rdf:rest rdf:nil
+                                                                                                 ]
+                                                                                      ]
+                                                                           ]
+                                                                ]
+                                                     ]
+                                         ] ;
+                              owl:propertyDisjointWith :Value_Format_quantitativ ;
+                              rdfs:comment """Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
 Liability: Necessary
@@ -761,40 +557,26 @@ DIN EN 61360-1:2018 Section 10.8
 
 Type: This data property represents only the non-quantitativ formats, string
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first>NR1</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first>NR2</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first>NR3</rdf:first>
-                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </rdfs:range>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value_Format_quantitativ
+:Value_Format_quantitativ rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain :Type_Description ;
+                          rdfs:range [ rdf:type rdfs:Datatype ;
+                                       owl:oneOf [ rdf:type rdf:List ;
+                                                   rdf:first "NR1" ;
+                                                   rdf:rest [ rdf:type rdf:List ;
+                                                              rdf:first "NR2" ;
+                                                              rdf:rest [ rdf:type rdf:List ;
+                                                                         rdf:first "NR3" ;
+                                                                         rdf:rest rdf:nil
+                                                                       ]
+                                                            ]
+                                                 ]
+                                     ] ;
+                          rdfs:comment """Description:
 Defines the representation of a data element in length and kind. See DIN61360 for detailed description of possible formats. Possible definitions include non-quantitative formats, quantitative formats and maximum count of characters
 
 Liability: Necessary
@@ -803,53 +585,44 @@ DIN EN 61360-1:2018 Section 10.8
 
 Type: This data property represents only the quantitativ formats, string
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_List -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_List">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-        <rdfs:comment>Description: 
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value_List
+:Value_List rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Simple_Data_Type ;
+            rdfs:comment """Description: 
 Represents the possible values for a data element
 
 Liability: optional (in DIN613060 case depended due to classification of data element, which is not implemented here)
 
 DIN EN 61360-1:2018 Section 16
 
-Type: This data property represents the information, if there is a value list (if so, true), basically the values that the data property &quot;Value&quot; is allowed to hold. 
+Type: This data property represents the information, if there is a value list (if so, true), basically the values that the data property \"Value\" is allowed to hold. 
 
-Poposed Data Range Expression: xsd:boolean</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:boolean""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-        <rdfs:comment>Description: 
+###  http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member
+:Value_List_Member rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Simple_Data_Type ;
+                   rdfs:comment """Description: 
 Represents the possible values for a data element
 
 Liability: optional (in DIN613060 case depended due to classification of data element, which is not implemented here)
 
 DIN EN 61360-1:2018 Section 16
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Version_Number -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Version_Number">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Version_Number
+:Version_Number rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Type_Description ;
+                rdfs:comment """Description:
 Number that indicates different versions of one data element type
 
 Liability: Necessary
@@ -858,423 +631,288 @@ DIN EN 61360-1:2018 Section 7.8
 
 Type: Integer with three digits max, so between 1 and 999
 
-Poposed Data Range Expression: xsd:integer[&gt;= 1 , &lt;= 999]</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:integer[>= 1 , <= 999]""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Revision -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Revision">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Revision
+:backwards_compatible_Revision rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :Type_Description ;
+                               rdfs:comment """Description:
 Indicates, to which revisions the data type is backwards compatible.
 
 Type: Integer
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Version -->
-
-    <owl:DatatypeProperty rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Version">
-        <rdfs:domain rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#backwards_compatible_Version
+:backwards_compatible_Version rdf:type owl:DatatypeProperty ;
+                              rdfs:domain :Type_Description ;
+                              rdfs:comment """Description:
 Indicates, to which version numbers the data type is backwards compatible.
 
 Type: Integer
 
-Poposed Data Range Expression: xsd:string</rdfs:comment>
-    </owl:DatatypeProperty>
-    
+Poposed Data Range Expression: xsd:string""" .
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+#################################################################
+#    Classes
+#################################################################
 
-    
-
-
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Array
+:Array rdf:type owl:Class ;
+       rdfs:subClassOf :Complex_Data_Type ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :complex_Data_Type_has_Member ;
+                         owl:allValuesFrom :Array_Member
+                       ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Array_Member -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Dimension"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Array_Member_Position"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Array_Member
+:Array_Member rdf:type owl:Class ;
+              rdfs:subClassOf :Complex_Data_Type_Member ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :Array_Member_Dimension ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:int
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :Array_Member_Position ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:int
+                              ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Bag -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Bag">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Bag
+:Bag rdf:type owl:Class ;
+     rdfs:subClassOf :Complex_Data_Type ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :complex_Data_Type_has_Member ;
+                       owl:allValuesFrom :Bag_Member
+                     ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Bag_Member
+:Bag_Member rdf:type owl:Class ;
+            rdfs:subClassOf :Complex_Data_Type_Member .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Boolean -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Boolean">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Boolean
+:Boolean rdf:type owl:Class ;
+         rdfs:subClassOf :Simple_Data_Type ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Value_List_Member ;
+                           owl:allValuesFrom xsd:boolean
+                         ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
-        <owl:disjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type
+:Complex_Data_Type rdf:type owl:Class ;
+                   rdfs:subClassOf :Data_Type ;
+                   owl:disjointWith :Simple_Data_Type .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member
+:Complex_Data_Type_Member rdf:type owl:Class ;
+                          rdfs:subClassOf :Data_Type .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Data_Element -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Element">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Type_Description"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#has_Instance_Description"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Data_Element
+:Data_Element rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_Type_Description ;
+                                owl:someValuesFrom :Type_Description
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_Instance_Description ;
+                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Instance_Description
+                              ] ;
+              owl:disjointWith :Type_Description ;
+              rdfs:comment """Description:
 Contains a the structure of all data element (DIN61360 3.5.2, see also section 4)
 
-Each Data_Element has to have a type description and may have an instance description</rdfs:comment>
-    </owl:Class>
-    
+Each Data_Element has to have a type description and may have an instance description""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Data_Type -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Data_Type
+:Data_Type rdf:type owl:Class .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Expression_Goal"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Logic_Interpretation"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description"/>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Instance_Description
+:Instance_Description rdf:type owl:Class ;
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                        owl:onProperty :Expression_Goal ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onDataRange xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :Logic_Interpretation ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onDataRange xsd:string
+                                      ] ;
+                      owl:disjointWith :Type_Description .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Integer -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Integer">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Integer
+:Integer rdf:type owl:Class ;
+         rdfs:subClassOf :Simple_Data_Type ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Value_List_Member ;
+                           owl:allValuesFrom xsd:int
+                         ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#List -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#List_Member"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#List
+:List rdf:type owl:Class ;
+      rdfs:subClassOf :Complex_Data_Type ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :complex_Data_Type_has_Member ;
+                        owl:allValuesFrom :List_Member
+                      ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#List_Member -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List_Member">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#List_Member_Position"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#List_Member
+:List_Member rdf:type owl:Class ;
+             rdfs:subClassOf :Complex_Data_Type_Member ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :List_Member_Position ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:int
+                             ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Real -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Real">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Real
+:Real rdf:type owl:Class ;
+      rdfs:subClassOf :Simple_Data_Type ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :Value_List_Member ;
+                        owl:allValuesFrom xsd:float
+                      ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Set -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Set">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#complex_Data_Type_has_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Set_Member"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Set
+:Set rdf:type owl:Class ;
+     rdfs:subClassOf :Complex_Data_Type ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :complex_Data_Type_has_Member ;
+                       owl:allValuesFrom :Set_Member
+                     ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Set_Member -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Set_Member">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Complex_Data_Type_Member"/>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Set_Member
+:Set_Member rdf:type owl:Class ;
+            rdfs:subClassOf :Complex_Data_Type_Member .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment>Description:
+###  http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type
+:Simple_Data_Type rdf:type owl:Class ;
+                  rdfs:subClassOf :Data_Type ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Value_List ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:boolean
+                                  ] ;
+                  rdfs:comment """Description:
 Indicates which kind of DataType a data element must be. This does not include all data types of DIN61360! 
 
 Liability: Necessary
 
 DIN61360: 3.4.1
 
-Type: is a enumeration of standard compliant data types. Please see DIN61360 for a description of level/class-instance/list/set/bag/array</rdfs:comment>
-    </owl:Class>
-    
+Type: is a enumeration of standard compliant data types. Please see DIN61360 for a description of level/class-instance/list/set/bag/array""" .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#String -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#String">
-        <rdfs:subClassOf rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Simple_Data_Type"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Value_List_Member"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#String
+:String rdf:type owl:Class ;
+        rdfs:subClassOf :Simple_Data_Type ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :Value_List_Member ;
+                          owl:allValuesFrom xsd:string
+                        ] .
 
 
-    <!-- http://www.w3id.org/hsu-aut/DINEN61360#Type_Description -->
-
-    <owl:Class rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Type_Description">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Code"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Definition"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Name"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Short_Name"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Version_Number"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Preferred_Letter_Symbol"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Letter_Symbol"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3id.org/hsu-aut/DINEN61360#Synonymous_Name"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment>Value list is expressed as exactly 1, since not using a value list has to result in value list false</rdfs:comment>
-    </owl:Class>
-    
+###  http://www.w3id.org/hsu-aut/DINEN61360#Type_Description
+:Type_Description rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Code ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Definition ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Preferred_Name ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Short_Name ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Version_Number ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:int
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Preferred_Letter_Symbol ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Synonymous_Letter_Symbol ;
+                                    owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :Synonymous_Name ;
+                                    owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  rdfs:comment "Value list is expressed as exactly 1, since not using a value list has to result in value list false" .
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+#################################################################
+#    Annotations
+#################################################################
 
-    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
-        <rdfs:comment>In order to check consistency, the following procedure is used:
+owl:Thing rdfs:comment """In order to check consistency, the following procedure is used:
 
 First, the reasoner checks, whether the class expressions to hold for the ABox. If that is not the case, then a explanation of inconsistency can be accessed.
 
-Second, SWRL rules are used to check the constency aspects that cannot be modelled through class expressions. These rules infer 4 &quot;Overall_X_Constent&quot; DataProperties. For the case that incremental rules were possible, other consistency attributes are inferred, so that in case of inconsistency a debugging can be started.
+Second, SWRL rules are used to check the constency aspects that cannot be modelled through class expressions. These rules infer 4 \"Overall_X_Constent\" DataProperties. For the case that incremental rules were possible, other consistency attributes are inferred, so that in case of inconsistency a debugging can be started.
 
 Explanation to class expressions in relation to DIN61360 definitions:
 
-&quot;exactly&quot; is used for &quot;necessary&quot; (zwingend)
-&quot;max&quot; is used for &quot;optinal&quot; (wahlfrei) with maximum restriction
+\"exactly\" is used for \"necessary\" (zwingend)
+\"max\" is used for \"optinal\" (wahlfrei) with maximum restriction
 
-If something is just &quot;optional&quot;, it will not occur in the class expression.
+If something is just \"optional\", it will not occur in the class expression.
 
-If a liability in DIN61360 states &quot;case dependend&quot; (bedingt), then this considered in a SWRL rule, which will give the DataProperties of &quot;x_Consistent&quot; to the Data_Element</rdfs:comment>
-    </rdf:Description>
-    
+If a liability in DIN61360 states \"case dependend\" (bedingt), then this considered in a SWRL rule, which will give the DataProperties of \"x_Consistent\" to the Data_Element""" .
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+#################################################################
+#    General axioms
+#################################################################
 
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Array"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Bag"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Boolean"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Integer"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#List"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Real"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#Set"/>
-            <rdf:Description rdf:about="http://www.w3id.org/hsu-aut/DINEN61360#String"/>
-        </owl:members>
-    </rdf:Description>
-</rdf:RDF>
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Array
+                :Bag
+                :Boolean
+                :Integer
+                :List
+                :Real
+                :Set
+                :String
+              )
+] .
 
 
-
-<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
-
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
