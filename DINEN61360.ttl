@@ -7,9 +7,9 @@
 @base <http://www.w3id.org/hsu-aut/DINEN61360#> .
 
 <http://www.w3id.org/hsu-aut/DINEN61360> rdf:type owl:Ontology ;
-                                          owl:versionIRI <http://www.w3id.org/hsu-aut/DINEN61360/2.0.2> ;
+                                          owl:versionIRI <http://www.w3id.org/hsu-aut/DINEN61360/2.0.3> ;
                                           rdfs:comment "An ontology based on IEC 61360 standard for structured property modeling. Defines properties with type descriptions and instances having expression goals (requirement, actual_value, assurance, variable) and relational operators for value specification and constraint definition." ;
-                                          owl:versionInfo "2.0.2" .
+                                          owl:versionInfo "2.0.3" .
 
 #################################################################
 #    Object Properties
